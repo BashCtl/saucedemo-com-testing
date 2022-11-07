@@ -1,0 +1,15 @@
+{
+  "standard": {
+    "username": "standard_user"
+  },
+  "locked_out": {
+    "username": "locked_out_user"
+  },
+  "problem": {
+    "username": "problem_user"
+  },
+  "glitch": {
+    "username": "performance_glitch_user"
+  },
+  "password": "secret_sauce"
+}
