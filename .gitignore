@@ -9,3 +9,10 @@
 /dataSources.local.xml
 #Node
 node_modules
+#Cypress
+cypress/results
+cypress/videos
+cypress/screenshots
+#Mochawesome
+mochawesome-report
+mochawesome.json
