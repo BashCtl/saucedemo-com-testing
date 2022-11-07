@@ -11,5 +11,6 @@
   "glitch": {
     "username": "performance_glitch_user"
   },
-  "password": "secret_sauce"
+  "password": "secret_sauce",
+  "invalidPass": "fuckYouBitch"
 }
