@@ -71,5 +71,27 @@ describe('Verify product test scenarios', () => {
         productsPage.checkPageTitle(this.products.pageTitle)
     })
 
+    it('Checkout with one item removal', function () {
+        productsPage.checkPageTitle(this.products.pageTitle)
+            .addProductToCart(this.products.items.backpack)
+            .addProductToCart(this.products.items.jacket)
+            .addProductToCart(this.products.items.tshirt)
+            .openCart()
+        cartPage.checkProductPresents(this.products.items.backpack)
+            .checkProductPresents(this.products.items.jacket)
+            .checkProductPresents(this.products.items.tshirt)
+            .removeItem(this.products.items.tshirt)
+            .checkItemNotPresent(this.products.items.tshirt)
+            .clickCheckoutBtn()
+        checkoutPage.enterFirstname(this.user.firstName)
+            .enterLastname(this.user.lastname)
+            .enterPostalCode(this.user.postalCode)
+            .clickContinueBtn()
+            .clickFinishBtn()
+            .checkCompleteHeader(this.products.checkout.completeHeader)
+            .clickBackHomeBtn()
+        productsPage.checkPageTitle(this.products.pageTitle)
+    })
+
 
 })
