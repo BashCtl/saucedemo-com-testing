@@ -61,7 +61,7 @@ workflows:
       - schedule:
           cron: "30 3 * * *"
           filters:
-            branch:
+            branches:
               only:
                 - master
     jobs:
