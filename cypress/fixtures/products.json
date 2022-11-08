@@ -2,5 +2,8 @@
   "pageTitle": "Products",
   "items": {
     "backpack": "Sauce Labs Backpack"
+  },
+  "checkout": {
+    "completeHeader": "THANK YOU FOR YOUR ORDER"
   }
 }

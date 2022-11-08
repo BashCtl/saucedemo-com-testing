@@ -12,5 +12,8 @@
     "username": "performance_glitch_user"
   },
   "password": "secret_sauce",
-  "invalidPass": "fuckYouBitch"
+  "invalidPass": "fuckYouBitch",
+  "firstName": "John",
+  "lastname": "Kramer",
+  "postalCode": 666999
 }

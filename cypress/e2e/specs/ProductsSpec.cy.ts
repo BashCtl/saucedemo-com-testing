@@ -1,6 +1,7 @@
 import loginPage from "../pages/LoginPage";
 import productsPage from "../pages/ProductsPage";
 import cartPage from "../pages/CartPage";
+import checkoutPage from "../pages/CheckoutPage";
 
 describe('Verify product test scenarios', () => {
 
@@ -32,6 +33,22 @@ describe('Verify product test scenarios', () => {
         cartPage.checkProductPresents(this.products.items.backpack)
             .removeItem(this.products.items.backpack)
             .checkItemNotPresent(this.products.items.backpack)
+    })
+
+    it.only('Checkout with one item in the cart', function () {
+        productsPage.checkPageTitle(this.products.pageTitle)
+            .addProductToCart(this.products.items.backpack)
+            .openCart()
+        cartPage.checkProductPresents(this.products.items.backpack)
+            .clickCheckoutBtn()
+        checkoutPage.enterFirstname(this.user.firstName)
+            .enterLastname(this.user.lastname)
+            .enterPostalCode(this.user.postalCode)
+            .clickContinueBtn()
+            .clickFinishBtn()
+            .checkCompleteHeader(this.products.checkout.completeHeader)
+            .clickBackHomeBtn()
+        productsPage.checkPageTitle(this.products.pageTitle)
     })
 
 
