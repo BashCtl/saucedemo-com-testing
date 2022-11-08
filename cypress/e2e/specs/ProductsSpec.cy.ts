@@ -25,5 +25,14 @@ describe('Verify product test scenarios', () => {
         cartPage.checkProductPresents(this.products.items.backpack)
     })
 
+    it('Remove product from the cart', function () {
+        productsPage.checkPageTitle(this.products.pageTitle)
+            .addProductToCart(this.products.items.backpack)
+            .openCart()
+        cartPage.checkProductPresents(this.products.items.backpack)
+            .removeItem(this.products.items.backpack)
+            .checkItemNotPresent(this.products.items.backpack)
+    })
+
 
 })
