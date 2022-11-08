@@ -1,7 +1,9 @@
 {
   "pageTitle": "Products",
   "items": {
-    "backpack": "Sauce Labs Backpack"
+    "backpack": "Sauce Labs Backpack",
+    "jacket": "Sauce Labs Fleece Jacket",
+    "tshirt": "Sauce Labs Bolt T-Shirt"
   },
   "checkout": {
     "completeHeader": "THANK YOU FOR YOUR ORDER"

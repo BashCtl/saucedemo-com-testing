@@ -35,11 +35,31 @@ describe('Verify product test scenarios', () => {
             .checkItemNotPresent(this.products.items.backpack)
     })
 
-    it.only('Checkout with one item in the cart', function () {
+    it('Checkout with one item in the cart', function () {
         productsPage.checkPageTitle(this.products.pageTitle)
             .addProductToCart(this.products.items.backpack)
             .openCart()
         cartPage.checkProductPresents(this.products.items.backpack)
+            .clickCheckoutBtn()
+        checkoutPage.enterFirstname(this.user.firstName)
+            .enterLastname(this.user.lastname)
+            .enterPostalCode(this.user.postalCode)
+            .clickContinueBtn()
+            .clickFinishBtn()
+            .checkCompleteHeader(this.products.checkout.completeHeader)
+            .clickBackHomeBtn()
+        productsPage.checkPageTitle(this.products.pageTitle)
+    })
+
+    it('Checkout with several items', function () {
+        productsPage.checkPageTitle(this.products.pageTitle)
+            .addProductToCart(this.products.items.backpack)
+            .addProductToCart(this.products.items.jacket)
+            .addProductToCart(this.products.items.tshirt)
+            .openCart()
+        cartPage.checkProductPresents(this.products.items.backpack)
+            .checkProductPresents(this.products.items.jacket)
+            .checkProductPresents(this.products.items.tshirt)
             .clickCheckoutBtn()
         checkoutPage.enterFirstname(this.user.firstName)
             .enterLastname(this.user.lastname)
