@@ -1,3 +1,6 @@
 {
-  "pageTitle": "Products"
+  "pageTitle": "Products",
+  "items": {
+    "backpack": "Sauce Labs Backpack"
+  }
 }
