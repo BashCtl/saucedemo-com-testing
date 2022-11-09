@@ -17,5 +17,9 @@
 import './commands'
 import 'cypress-real-events/support'
 import 'cypress-xpath'
+
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+const chaiSorted = require('chai-sorted');
+
+chai.use(chaiSorted);

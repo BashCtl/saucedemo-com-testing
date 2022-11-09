@@ -93,5 +93,11 @@ describe('Verify product test scenarios', () => {
         productsPage.checkPageTitle(this.products.pageTitle)
     })
 
+    it.only('Sort products from A to Z', function () {
+        productsPage.checkPageTitle(this.products.pageTitle)
+            .selectSortOption(this.products.sortOptions.aToZ)
+            .itemsShouldBeSortedAtoZ()
+    })
+
 
 })
