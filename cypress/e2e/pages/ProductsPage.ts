@@ -35,6 +35,14 @@ class ProductsPage {
         return this
     }
 
+    itemsShouldBeSortedZtoA(){
+        this.itemNames().then((items)=> {
+            const itemsTitles = Array.from(items, item=> item.innerText)
+            // @ts-ignore
+            expect(itemsTitles).to.be.sorted({descending: true})
+        })
+    }
+
 }
 
 export default new ProductsPage()

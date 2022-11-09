@@ -93,10 +93,16 @@ describe('Verify product test scenarios', () => {
         productsPage.checkPageTitle(this.products.pageTitle)
     })
 
-    it.only('Sort products from A to Z', function () {
+    it('Sort products from A to Z', function () {
         productsPage.checkPageTitle(this.products.pageTitle)
             .selectSortOption(this.products.sortOptions.aToZ)
             .itemsShouldBeSortedAtoZ()
+    })
+
+    it('Sort products from Z to A', function () {
+        productsPage.checkPageTitle(this.products.pageTitle)
+            .selectSortOption(this.products.sortOptions.zToA)
+            .itemsShouldBeSortedZtoA()
     })
 
 
