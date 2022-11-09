@@ -1,8 +1,16 @@
 version: 2.1
 
+parameters:
+  browser:
+    type: string
+    default: chrome
 
 jobs:
   build:
+    parameters:
+      e2eRun:
+        type: string
+        default: npm run test -- --browser << pipeline.parameters.browser >>
     docker:
       - image: cypress/browsers:latest
         environment:
@@ -27,7 +35,7 @@ jobs:
             - ~/.cache
       - run:
           name: Run e2e
-          command: npm run test
+          command: << parameters.e2eRun >>
           no_output_timeout: 180m
 
 
@@ -66,3 +74,15 @@ workflows:
                 - master
     jobs:
       - build
+
+  smoke:
+    triggers:
+      - schedule:
+          cron: "0 2,5,8,11,14,17,20,23 * * *"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - build:
+          e2eRun: CYPRESS_INCLUDE_TAGS=smoke npm run test -- --browser << pipeline.parameters.browser >>

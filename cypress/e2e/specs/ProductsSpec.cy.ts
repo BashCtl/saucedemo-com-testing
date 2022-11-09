@@ -1,3 +1,4 @@
+/// <reference types='cypress-tags' />
 import loginPage from "../pages/LoginPage";
 import productsPage from "../pages/ProductsPage";
 import cartPage from "../pages/CartPage";
@@ -51,7 +52,7 @@ describe('Verify product test scenarios', () => {
         productsPage.checkPageTitle(this.products.pageTitle)
     })
 
-    it('Checkout with several items', function () {
+    it(['smoke'], 'Checkout with several items', function () {
         productsPage.checkPageTitle(this.products.pageTitle)
             .addProductToCart(this.products.items.backpack)
             .addProductToCart(this.products.items.jacket)
