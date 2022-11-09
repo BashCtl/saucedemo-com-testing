@@ -105,5 +105,17 @@ describe('Verify product test scenarios', () => {
             .itemsShouldBeSortedZtoA()
     })
 
+    it('Sort products by price from low to high', function () {
+        productsPage.checkPageTitle(this.products.pageTitle)
+            .selectSortOption(this.products.sortOptions.priceLowToHight)
+            .itemsShouldBeSortedByLowPrice()
+    })
+
+    it('Sort products by price from high to low', function () {
+        productsPage.checkPageTitle(this.products.pageTitle)
+            .selectSortOption(this.products.sortOptions.priceHighToLow)
+            .itemsShouldBeSortedBeHighPrice()
+    })
+
 
 })
