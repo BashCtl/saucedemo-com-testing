@@ -25,7 +25,7 @@ describe('Testing user login', () => {
         productsPage.checkPageTitle(this.products.pageTitle)
     })
 
-    it(['somke'],'Login with invalid user password', function () {
+    it(['smoke'],'Login with invalid user password', function () {
         loginPage.enterUsername(this.user.standard.username)
             .enterPassword(this.user.invalidPass)
             .clickLoginBtn()
