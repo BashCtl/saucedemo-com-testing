@@ -7,6 +7,12 @@ class ProductsPage {
     private sortDropdown = () => cy.get('.product_sort_container')
     private itemsNames = () => cy.get('.inventory_item_name')
     private itemsPrices = () => cy.get('.inventory_item_price')
+    private burgerMenu = () => cy.get('#react-burger-menu-btn')
+    private closeBurgerMenuBtn = () => cy.get('.bm-cross-button')
+    private allItemsMenuLink = () => cy.get('#inventory_sidebar_link')
+    private aboutMenuLink = () => cy.get('#about_sidebar_link')
+    private logoutMenuLink = () => cy.get('#logout_sidebar_link')
+    private resetAppStateMenuLink = () => cy.get('#reset_sidebar_link')
 
     checkPageTitle(title) {
         this.pageTitle().should('have.text', title)
@@ -58,6 +64,38 @@ class ProductsPage {
             //@ts-ignore
             expect(prices).to.be.sorted({descending: true})
         })
+    }
+
+    openBurgerMenu() {
+        this.burgerMenu().click()
+        return this
+    }
+
+    closeBurgerMenu() {
+        this.closeBurgerMenuBtn().click()
+        return this
+    }
+
+    burgerMenuShouldBeClosed() {
+        this.closeBurgerMenuBtn().should('not.be.visible')
+        return this
+    }
+
+    clickAllItemsMenuLink() {
+        this.allItemsMenuLink().click()
+        return this
+    }
+
+    clickAboutMenuLink() {
+        this.aboutMenuLink().click()
+    }
+
+    clickLogoutMenuLink() {
+        this.logoutMenuLink().click()
+    }
+
+    clickResetAppState() {
+        this.resetAppStateMenuLink().click()
     }
 
 }

@@ -2,7 +2,7 @@ class LoginPage {
     private usernameInput = () => cy.get('#user-name')
     private passwordInput = () => cy.get('#password')
     private loginBtn = () => cy.get('#login-button')
-    private errorMsg = ()=> cy.get('[data-test="error"]')
+    private errorMsg = () => cy.get('[data-test="error"]')
 
     navigate() {
         cy.visit('')
@@ -24,8 +24,13 @@ class LoginPage {
         return this
     }
 
-    checkLoginError(error){
+    checkLoginError(error) {
         this.errorMsg().should('contain', error)
+        return this
+    }
+
+    loginBtnShouldBeVisible() {
+        this.loginBtn().should('be.visible')
         return this
     }
 }
