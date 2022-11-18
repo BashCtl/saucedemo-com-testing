@@ -5,7 +5,7 @@ parameters:
     type: string
     default: chrome
 
-  regressionTrigger:
+  ApiTrigger:
     type: boolean
     default: false
 
@@ -64,7 +64,7 @@ jobs:
 workflows:
   version: 2
   commit:
-    unless: << pipeline.parameters.regressionTrigger >>
+    unless: << pipeline.parameters.ApiTrigger >>
     jobs:
       - build
 
@@ -92,7 +92,7 @@ workflows:
           e2eRun: CYPRESS_INCLUDE_TAGS=smoke npm run test -- --browser << pipeline.parameters.browser >>
 
   regression_demand:
-    when: << pipeline.parameters.regressionTrigger >>
+    when: << pipeline.parameters.ApiTrigger >>
     jobs:
       - build:
           filters:
