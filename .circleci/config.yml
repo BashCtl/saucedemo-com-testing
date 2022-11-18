@@ -38,6 +38,9 @@ jobs:
             - ~/.npm
             - ~/.cache
       - run:
+          name: Api Trigger
+          command: echo  << pipeline.parameters.ApiTrigger >>
+      - run:
           name: Run e2e
           command: << parameters.e2eRun >>
           no_output_timeout: 180m
