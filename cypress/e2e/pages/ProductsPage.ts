@@ -87,7 +87,7 @@ class ProductsPage {
     }
 
     clickAboutMenuLink() {
-        this.aboutMenuLink().click()
+        this.aboutMenuLink().invoke('removeAttr', 'target').click()
     }
 
     clickLogoutMenuLink() {
