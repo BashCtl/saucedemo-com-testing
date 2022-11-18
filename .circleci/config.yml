@@ -63,7 +63,6 @@ jobs:
 
 workflows:
   version: 2
-
   commit:
     unless: << pipeline.parameters.regressionTrigger >>
     jobs:
