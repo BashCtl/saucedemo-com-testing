@@ -109,6 +109,30 @@ describe('Verify product test scenarios', () => {
             .checkErrorMsg(this.errors.checkout.firstNameErr)
     })
 
+    it('Checkout without lastname', function () {
+        productsPage.checkPageTitle(this.products.pageTitle)
+            .addProductToCart(this.products.items.backpack)
+            .openCart()
+        cartPage.checkProductPresents(this.products.items.backpack)
+            .clickCheckoutBtn()
+        checkoutPage.enterFirstname(this.user.firstName)
+            .enterPostalCode(this.user.postalCode)
+            .clickContinueBtn()
+            .checkErrorMsg(this.errors.checkout.lastNameErr)
+    })
+
+    it('Checkout without postal code', function () {
+        productsPage.checkPageTitle(this.products.pageTitle)
+            .addProductToCart(this.products.items.backpack)
+            .openCart()
+        cartPage.checkProductPresents(this.products.items.backpack)
+            .clickCheckoutBtn()
+        checkoutPage.enterFirstname(this.user.firstName)
+            .enterLastname(this.user.lastname)
+            .clickContinueBtn()
+            .checkErrorMsg(this.errors.checkout.postalCodeErr)
+    })
+
     it('Sort products from A to Z', function () {
         productsPage.checkPageTitle(this.products.pageTitle)
             .selectSortOption(this.products.sortOptions.aToZ)

@@ -5,6 +5,6 @@
   "checkout": {
     "firstNameErr": "Error: First Name is required",
     "lastNameErr": "Error: Last Name is required",
-    "postalCode": "Error: Postal Code is required"
+    "postalCodeErr": "Error: Postal Code is required"
   }
 }
