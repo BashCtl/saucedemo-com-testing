@@ -5,7 +5,7 @@ parameters:
     type: string
     default: chrome
 
-  ApiTrigger:
+  regressionTrigger:
     type: boolean
     default: false
 
@@ -38,9 +38,6 @@ jobs:
             - ~/.npm
             - ~/.cache
       - run:
-          name: Api Trigger
-          command: echo  << pipeline.parameters.ApiTrigger >>
-      - run:
           name: Run e2e
           command: << parameters.e2eRun >>
           no_output_timeout: 180m
@@ -67,7 +64,7 @@ jobs:
 workflows:
   version: 2
   commit:
-    unless: << pipeline.parameters.ApiTrigger >>
+    unless: << pipeline.parameters.regressionTrigger >>
     jobs:
       - build
 
@@ -95,7 +92,7 @@ workflows:
           e2eRun: CYPRESS_INCLUDE_TAGS=smoke npm run test -- --browser << pipeline.parameters.browser >>
 
   regression_demand:
-    when: << pipeline.parameters.ApiTrigger >>
+    when: << pipeline.parameters.regressionTrigger >>
     jobs:
       - build:
           filters:
