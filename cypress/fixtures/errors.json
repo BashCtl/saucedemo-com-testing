@@ -1,5 +1,10 @@
 {
   "login": {
     "invalidCredentials": "Username and password do not match any user in this service"
+  },
+  "checkout": {
+    "firstNameErr": "Error: First Name is required",
+    "lastNameErr": "Error: Last Name is required",
+    "postalCode": "Error: Postal Code is required"
   }
 }

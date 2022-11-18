@@ -17,6 +17,9 @@ describe('Verify product test scenarios', () => {
         cy.fixture('products').then((products) => {
             this.products = products
         })
+        cy.fixture('errors').then((errors) => {
+            this.errors = errors
+        })
 
     })
 
@@ -92,6 +95,18 @@ describe('Verify product test scenarios', () => {
             .checkCompleteHeader(this.products.checkout.completeHeader)
             .clickBackHomeBtn()
         productsPage.checkPageTitle(this.products.pageTitle)
+    })
+
+    it('Checkout without first name', function () {
+        productsPage.checkPageTitle(this.products.pageTitle)
+            .addProductToCart(this.products.items.backpack)
+            .openCart()
+        cartPage.checkProductPresents(this.products.items.backpack)
+            .clickCheckoutBtn()
+        checkoutPage.enterLastname(this.user.lastname)
+            .enterPostalCode(this.user.postalCode)
+            .clickContinueBtn()
+            .checkErrorMsg(this.errors.checkout.firstNameErr)
     })
 
     it('Sort products from A to Z', function () {

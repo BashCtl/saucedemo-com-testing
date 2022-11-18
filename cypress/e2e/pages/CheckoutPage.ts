@@ -8,6 +8,7 @@ class CheckoutPage {
     private cancelBtn = () => cy.get('#cancel')
     private completeHeader = () => cy.get('.complete-header')
     private backHomeBtn = () => cy.get('#back-to-products')
+    private errorMsg = () => cy.get('.error-message-container h3')
 
     enterFirstname(firstname) {
         this.firstNameInput().clear().type(firstname)
@@ -46,6 +47,11 @@ class CheckoutPage {
 
     clickBackHomeBtn() {
         this.backHomeBtn().click()
+    }
+
+    checkErrorMsg(error) {
+        this.errorMsg().should('contain', error)
+        return this
     }
 }
 
