@@ -118,5 +118,13 @@ describe('Verify product test scenarios', () => {
             .itemsShouldBeSortedBeHighPrice()
     })
 
+    it('Add product to the cart and continue shopping', function () {
+        productsPage.checkPageTitle(this.products.pageTitle)
+            .addProductToCart(this.products.items.backpack)
+            .openCart()
+        cartPage.clickContinueShoppingBtn()
+        productsPage.checkPageTitle(this.products.pageTitle)
+    })
+
 
 })
