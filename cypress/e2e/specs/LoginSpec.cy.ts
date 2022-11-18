@@ -45,4 +45,11 @@ describe('Testing user login', () => {
         loginPage.loginBtnShouldBeVisible()
     })
 
+    it(['smoke'], 'Attempt to login with locked user', function () {
+        loginPage.enterUsername(this.user.locked_out.username)
+            .enterPassword(this.user.password)
+            .clickLoginBtn()
+            .checkLoginError(this.errors.login.lockedUser)
+    })
+
 })
