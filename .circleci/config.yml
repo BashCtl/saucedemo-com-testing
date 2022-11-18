@@ -65,7 +65,7 @@ workflows:
   version: 2
 
   commit:
-    unless: << pipline.parameters.regressionTrigger >>
+    unless: << pipeline.parameters.regressionTrigger >>
     jobs:
       - build
 
@@ -93,7 +93,7 @@ workflows:
           e2eRun: CYPRESS_INCLUDE_TAGS=smoke npm run test -- --browser << pipeline.parameters.browser >>
 
 regression_demand:
-  when: << pipline.parameters.regressionTrigger >>
+  when: << pipeline.parameters.regressionTrigger >>
   jobs:
     - build:
         filters:
