@@ -42,7 +42,6 @@ jobs:
           command: << parameters.e2eRun >>
           no_output_timeout: 180m
 
-
       - run:
           name: Generate mocha report
           command: npm run mochawesome:merge
@@ -68,28 +67,28 @@ workflows:
     jobs:
       - build
 
-  nightly_run:
-    triggers:
-      - schedule:
-          cron: "30 3 * * *"
-          filters:
-            branches:
-              only:
-                - master
-    jobs:
-      - build
+  # nightly_run:
+  #   triggers:
+  #     - schedule:
+  #         cron: "30 3 * * *"
+  #         filters:
+  #           branches:
+  #             only:
+  #               - master
+  #   jobs:
+  #     - build
 
-  smoke:
-    triggers:
-      - schedule:
-          cron: "0 2,5,8,11,14,17,20,23 * * *"
-          filters:
-            branches:
-              only:
-                - master
-    jobs:
-      - build:
-          e2eRun: CYPRESS_INCLUDE_TAGS=smoke npm run test -- --browser << pipeline.parameters.browser >>
+  # smoke:
+  #   triggers:
+  #     - schedule:
+  #         cron: "0 2,5,8,11,14,17,20,23 * * *"
+  #         filters:
+  #           branches:
+  #             only:
+  #               - master
+  #   jobs:
+  #     - build:
+  #         e2eRun: CYPRESS_INCLUDE_TAGS=smoke npm run test -- --browser << pipeline.parameters.browser >>
 
   regression_demand:
     when: << pipeline.parameters.regressionTrigger >>
